@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Actualités on Chateaubourg en transition</title>
+    <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/actualites/</link>
+    <description>Recent content in Actualités on Chateaubourg en transition</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sat, 26 Feb 2022 15:18:41 +0200</lastBuildDate><atom:link href="https://acailly.github.io/chateaubourg-plateaux-numeriques/actualites/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>📚 Braderie de la bibliothèque de Châteaubourg</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/actualites/2022-02-26-braderie-bibliotheque/</link>
+      <pubDate>Sat, 26 Feb 2022 15:18:41 +0200</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/actualites/2022-02-26-braderie-bibliotheque/</guid>
+      <description>https://arleane.vitrecommunaute.bzh/cms/articleview/id/278</description>
+    </item>
+    
+    <item>
+      <title>🎉 Création du site !</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/actualites/2022-02-22-creation-site/</link>
+      <pubDate>Tue, 22 Feb 2022 15:18:41 +0200</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/actualites/2022-02-22-creation-site/</guid>
+      <description>Bienvenue sur le portail des acteurs et initiatives dans le pays de Chateaubourg et ses environs autour du thème de la transition face au déréglement climatique</description>
+    </item>
+    
+  </channel>
+</rss>

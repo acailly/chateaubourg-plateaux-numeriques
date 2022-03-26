@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Réparer on Chateaubourg en transition</title>
+    <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/consommation/reparer/</link>
+    <description>Recent content in Réparer on Chateaubourg en transition</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://acailly.github.io/chateaubourg-plateaux-numeriques/consommation/reparer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enseignes de réparation</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/consommation/reparer/enseignes-reparation/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/consommation/reparer/enseignes-reparation/</guid>
+      <description>Help Phone Repair 35 : https://www.hpr35.com/Cordonnerie Jamois : https://www.castelartcom.fr/adherent/cordonnerie-jamois.html</description>
+    </item>
+    
+    <item>
+      <title>Repair café</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/consommation/reparer/repair-cafe/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/consommation/reparer/repair-cafe/</guid>
+      <description>Edition 2021 :
+https://www.chateaubourg.fr/agenda/repaircafe-2/https://www.agistaterre.org/creez-votre-site-avec-des-blocs/nos-actions/consommation-responsable/repair-cafe/</description>
+    </item>
+    
+  </channel>
+</rss>

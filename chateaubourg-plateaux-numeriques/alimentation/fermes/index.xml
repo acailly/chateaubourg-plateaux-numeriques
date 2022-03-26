@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Les fermes aux alentours on Chateaubourg en transition</title>
+    <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/fermes/</link>
+    <description>Recent content in Les fermes aux alentours on Chateaubourg en transition</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/fermes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Le potager du coin (Domagné)</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/fermes/potager-du-coin/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/fermes/potager-du-coin/</guid>
+      <description>https://www.facebook.com/potagerducoin35/</description>
+    </item>
+    
+    <item>
+      <title>Les Vergers du Mitan Cranne (Domagné)</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/fermes/vergers-mitan-cranne/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/fermes/vergers-mitan-cranne/</guid>
+      <description>https://lesvergersdumitancranne.com/https://www.facebook.com/profile.php?id=100057107634792</description>
+    </item>
+    
+  </channel>
+</rss>

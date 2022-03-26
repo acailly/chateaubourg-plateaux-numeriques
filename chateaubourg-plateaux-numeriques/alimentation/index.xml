@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alimentation on Chateaubourg en transition</title>
+    <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/</link>
+    <description>Recent content in Alimentation on Chateaubourg en transition</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AMAPorte (AMAP)</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/amaporte/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/amaporte/</guid>
+      <description>http://amaporte-chateaubourg.blogspot.com/https://www.facebook.com/AmapChateaubourg/</description>
+    </item>
+    
+    <item>
+      <title>Le marché</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/marche/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/marche/</guid>
+      <description>https://www.chateaubourg.fr/marche/</description>
+    </item>
+    
+    <item>
+      <title>Panier des prés</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/panier-des-pres/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/alimentation/panier-des-pres/</guid>
+      <description>https://www.panierdespres.com/</description>
+    </item>
+    
+  </channel>
+</rss>

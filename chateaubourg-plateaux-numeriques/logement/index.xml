@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Logement on Chateaubourg en transition</title>
+    <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/logement/</link>
+    <description>Recent content in Logement on Chateaubourg en transition</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://acailly.github.io/chateaubourg-plateaux-numeriques/logement/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TODO</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/logement/todo/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/logement/todo/</guid>
+      <description>TODO</description>
+    </item>
+    
+  </channel>
+</rss>

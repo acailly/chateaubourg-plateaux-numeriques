@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Général on Chateaubourg en transition</title>
+    <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/general/</link>
+    <description>Recent content in Général on Chateaubourg en transition</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sat, 20 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://acailly.github.io/chateaubourg-plateaux-numeriques/general/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pourquoi ce site ?</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/general/pourquoi/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/general/pourquoi/</guid>
+      <description>TODO
+https://www.carbone4.com/myco2-empreinte-moyenne-evolution-methodo</description>
+    </item>
+    
+    <item>
+      <title>Aidez nous !</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/general/contribuer/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/general/contribuer/</guid>
+      <description>Il est fort probable qu&amp;rsquo;il manque des informations sur ce site, ou bien que certaines informations soient inexactes ou incomplètes.
+Aidez nous à corriger ou enrichir ce site en nous envoyant vos remarques à contact@todo.fr</description>
+    </item>
+    
+  </channel>
+</rss>

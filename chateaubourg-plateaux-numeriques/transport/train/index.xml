@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prendre le train on Chateaubourg en transition</title>
+    <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/transport/train/</link>
+    <description>Recent content in Prendre le train on Chateaubourg en transition</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://acailly.github.io/chateaubourg-plateaux-numeriques/transport/train/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abri à vélo</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/transport/train/abri-velo/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/transport/train/abri-velo/</guid>
+      <description>https://www.chateaubourg.fr/abri-velo-securise-a-la-gare/</description>
+    </item>
+    
+    <item>
+      <title>Horaires</title>
+      <link>https://acailly.github.io/chateaubourg-plateaux-numeriques/transport/train/horaires/</link>
+      <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://acailly.github.io/chateaubourg-plateaux-numeriques/transport/train/horaires/</guid>
+      <description>https://m.ter.sncf.com/bretagne/se-deplacer/gares/chateaubourg-87471524https://m.ter.sncf.com/bretagne/se-deplacer/fiches-horaireshttps://www.chateaubourg.fr/trains/</description>
+    </item>
+    
+  </channel>
+</rss>

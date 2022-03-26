@@ -1,0 +1,62 @@
+{{ define "main" }}
+
+{{ partial "page-header.html" . }}
+
+{{ $currentPage := . }}
+{{ $json := printf "%smedia/data.json" .Site.BaseURL }}
+{{ $data := getJSON $json }}
+
+<div id="wrapper" class="relative w-full flex justify-between mx-auto" data-kind="{{ .Kind }}">
+
+	<main id="main" role="main" class="w-full lg:max-w-4xl flex-auto min-h-screen lg:static lg:max-h-full lg:overflow-visible px-4 sm:px-6 xl:px-8">
+
+		{{- partialCached "search-results" . -}}
+		
+		<section class="w-full pb-12 {{ if .Params.icon | and .Params.header }}pt-0 -mt-8{{ else }}pt-12{{ end }} print:mt-4">
+			
+			<header class="pb-4 print:pb-3 border-b">
+				{{ with .Params.icon }}
+				<span class="inline-block text-6xl mb-8 print:float-left print:mt-2 print:mb-0 print:mr-6 print:text-3xl" aria-hidden="true">{{ . }}</span>
+				{{ end }}
+				<h1 class="text-gray-900 mb-2">{{ .Title }}</h1>
+				{{ with .Params.subtitle }}
+				<h2 class="text-lg text-gray-600 pb-6 print:clear-left">{{ . }}</h2>
+				{{ end }}
+			</header>
+			
+			{{ with .Content }}
+			<div class="py-8 border-b print:py-4 prose lg:prose-lg print:prose">
+				{{ . }}
+			</div>
+			{{ end }}
+			
+			<!--
+			<div class="py-8 print:py-4">
+				<form name="contact" action="/merci" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+					<p class="hidden">
+					  <label>Ne remplissez pas ce champ si vous êtes un humain : <input name="bot-field" /></label>
+					  <input type="hidden" id="subject" name="subject" value="">
+					</p>
+					<p>
+						<label class="block h-8 py-2 mb-1 text-sm uppercase tracking-wide text-gray-500 -mt-px select-none">Votre nom</label>
+						<input type="text" name="name" required autocomplete="off" placeholder="Prénom Nom" class="block w-full bg-gray-50 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 placeholder-gray-600 focus:placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 h-12" />  
+					</p>
+					<p>
+						<label class="block h-8 py-2 mb-1 text-sm uppercase tracking-wide text-gray-500 -mt-px select-none">Votre email</label>
+						<input type="email" name="email" required autocomplete="off" placeholder="prenom@exemple.com" class="block w-full bg-gray-50 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 placeholder-gray-600 focus:placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 h-12" oninput="updateSubject(this.value)" />
+					</p>
+					<p>
+						<label class="block h-8 py-2 mb-1 text-sm uppercase tracking-wide text-gray-500 -mt-px select-none">Message</label>
+						<textarea name="message" required autocomplete="off" placeholder="Écrivez ici votre message…" class="no-resize appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 placeholder-gray-600 focus:placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 h-48 resize-none"></textarea>
+					</p>
+					<p>
+						<button type="submit" class="border border-gray-300 placeholder-gray-500 hover:bg-gray-50 text-gray-900 py-2 px-4 rounded inline-flex items-center bg-white focus:outline-none focus:ring-2">Envoyer</button>
+					</p>
+				</form>
+			</div>-->
+
+		</section>
+	</main>
+
+</div>
+{{ end }}

@@ -1,0 +1,37 @@
+{{ define "main" }}
+
+{{ partial "page-header.html" . }}
+
+<div id="wrapper" class="relative w-full flex justify-between mx-auto" data-kind="{{ .Kind }}">
+  
+  <main id="main" role="main" class="w-full lg:max-w-4xl flex-auto min-h-screen lg:static lg:max-h-full lg:overflow-visible px-4 sm:px-6 xl:px-8 xl:mr-96">
+
+    {{- partialCached "search-results" . -}}
+    
+    <section class="w-full pb-12 {{ if .Params.icon | and .Params.header }}pt-0 -mt-8{{ else }}pt-12{{ end }} print:mt-4">
+      
+      <header class="pb-4 print:pb-3 border-b">
+        {{ with .Params.icon }}
+        <span class="icon | inline-block select-none text-6xl mb-8 print:float-left print:mt-2 print:mb-0 print:mr-6 print:text-3xl" aria-hidden="true">{{ . }}</span>
+        {{ end }}
+        <h1 class="text-gray-900 mb-2">{{ .Title }}</h1>
+        {{ with .Params.subtitle }}
+        <h2 class="text-lg text-gray-600 pb-6 print:clear-left">{{ . }}</h2>
+        {{ end }}
+      </header>
+      
+      {{ if and (or (in .RawContent "##") (in .RawContent "###")) (gt .WordCount 240 ) }}
+      <aside class="w-full border-b xl:border-0 text-sm xl:w-96 xl:absolute xl:right-0 xl:top-0 xl:bottom-24 xl:px-8 print:hidden" x-data="{ isExpanded: window.innerWidth >= 1280 }">
+        {{ partial "toc.html" . }}
+      </aside>
+      {{ end }}
+
+      <div class="py-8 print:py-4 prose lg:prose-lg print:prose">
+      {{ .Content }}
+      </div>
+
+    </section>
+  </main>
+
+</div>
+{{ end }}

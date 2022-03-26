@@ -1,0 +1,3 @@
+<div class="grid grid-cols-1 {{ with .Get 0 }} xs:grid-cols-{{.}} {{ else }} xs:grid-cols-2 {{ end }} gap-6 my-6">
+	{{ .Inner | markdownify }}
+</div>

@@ -1,0 +1,26 @@
+{{ $main := resources.Get "js/main.js" }}
+{{ $toc := resources.Get "js/toc.js" }}
+
+{{ $lunr := resources.Get "js/lunr/lunr.min.js" }}
+{{ $lunrStemmerSupport := resources.Get "js/lunr/lunr.stemmer.support.js" }}
+{{ $lunrFr := resources.Get "js/lunr/lunr.fr.js" }}
+
+{{ $defaultJS := slice $lunr $lunrStemmerSupport $lunrFr $main | resources.Concat "js/global.js" }}
+
+{{ $pageJS := slice $lunr $lunrStemmerSupport $lunrFr $main $toc | resources.Concat "js/global-page.js" }}
+
+{{ $js := $defaultJS }}
+{{ if eq .Kind "page" }}
+  {{ $js = $pageJS }}
+{{ end }}
+
+{{ if .Site.IsServer }}
+<script src="{{ $js.RelPermalink }}"></script>
+{{ else }}
+{{ $js := $js | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
+
+<!-- Simple Analytics -->
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>

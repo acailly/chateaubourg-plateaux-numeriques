@@ -1,0 +1,9 @@
+{{ with site.GetPage "/competences" }}
+<section class="section w-full py-12 border-b" id="competences">
+	<header>
+		<h2 class="flex items-center justify-between text-2xl text-gray-900"><span>{{ .Title }}</span><span>{{ .Params.Icon }}</span></h2>
+		<p class="text-gray-600 lg:text-lg">{{ .Params.subtitle }}</p>
+	</header>
+	{{ .Content }}
+</section>
+{{ end }}

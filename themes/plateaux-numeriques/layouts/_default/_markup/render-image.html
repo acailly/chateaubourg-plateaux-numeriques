@@ -1,0 +1,4 @@
+<figure>
+  <img src="{{ with resources.Get (.Destination | safeURL) }}{{ .RelPermalink }}{{ else }}{{ .Destination | safeURL }}{{ end }}" alt="{{ .Text }}" />
+  {{ with .Title }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>

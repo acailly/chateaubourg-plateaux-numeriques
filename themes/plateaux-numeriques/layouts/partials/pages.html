@@ -1,0 +1,13 @@
+<div class="py-12">
+	<h2 class="text-sm uppercase tracking-wide text-gray-500 mb-4">Pages</h2>
+	<!-- 
+	{{ $pagesCount := len .Pages }}
+	{{ $rows := div (add $pagesCount (mod $pagesCount 2)) 2 }}
+	<div class="grid grid-cols-1 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-{{$rows}} sm:gap-x-8">
+	-->
+	<ul>
+	{{ range .Pages.ByWeight }}
+		{{- partial "page-link" . -}}
+	{{ end }}
+	</ul>
+</div>

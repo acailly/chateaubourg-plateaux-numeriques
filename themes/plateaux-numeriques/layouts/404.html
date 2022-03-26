@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+<div id="wrapper" class="w-full max-w-8xl mx-auto" data-kind="{{ .Kind }}">
+  
+  <main id="main" role="main" class="w-full lg:max-w-4xl flex-auto min-h-screen lg:static lg:max-h-full lg:overflow-visible px-4 sm:px-6 xl:px-8">
+    
+    <section class="w-full pb-12 pt-12 print:mt-4">
+      
+      <header class="pb-4 print:pb-3 border-b">
+        <span class="icon | inline-block select-none text-6xl mb-8 print:float-left print:mt-2 print:mb-0 print:mr-6 print:text-3xl" aria-hidden="true">🧐</span>
+        <h1 class="text-gray-900 mb-2">Erreur 404</h1>
+        <h2 class="text-lg text-gray-600 pb-6 print:clear-left">Cette page n’existe pas.</h2>
+      </header>
+
+      <div class="py-8 print:py-4">
+      	<a href="{{ "/" | relURL }}" class="border border-gray-400 hover:border-gray-500 hover:bg-gray-50 text-sm text-gray-900 py-2 px-4 rounded inline-flex items-center">
+      		<span class="pb-px">Retourner à l’accueil</span>
+      		<svg class="text-gray-500 w-5 h-5 ml-2"><use xlink:href="#arrow-right"/></svg>
+      	</a>
+      </div>
+
+    </section>
+  </main>
+
+</div>
+{{ end }}

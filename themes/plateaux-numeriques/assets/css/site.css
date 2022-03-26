@@ -1,0 +1,381 @@
+@charset "utf-8";
+
+:root {
+	--color-primary: #2651D4;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+/* Issue: works locally but not in production */
+h2[id],
+h3[id],
+h4[id] {
+	scroll-snap-margin-top: 5rem;
+	scroll-margin-top: 5rem;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+::-moz-selection { background: #EADF48; color: rgba(17, 24, 39); }
+::selection      { background: #EADF48; color: rgba(17, 24, 39); }
+
+#logo {
+	background-image: url("/chateaubourg-plateaux-numeriques/media/logo.png");
+	background-repeat: no-repeat;
+	background-size: 3.5rem;
+	background-position: center;
+}
+
+.link-full::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}
+
+.page-link a:hover + * .page-link__icon-container,
+.page-link a:focus + * .page-link__icon-container {
+	border: 1px solid #a0aec0;
+}
+
+p, ul, ol {
+	margin-bottom: 1.5em;
+}
+
+ul.list-middot {
+	margin: 0;
+}
+ul.list-middot > li {
+	display: inline;
+}
+ul.list-middot > li + li::before {
+	content: "·";
+	margin: 0 0.5rem;
+	opacity: 0.75;
+}
+
+.prose a {
+	color: var(--color-primary);
+	text-decoration: underline;
+}
+.prose a[href*="//"]:not([href*="lalouvesc.fr"]):not([href*="lalouvesc.netlify.fr"])::after,
+.prose a.link-external::after {
+	content: "\2197"; /* ↗︎ */
+	display: inline-block;
+	position: relative;
+	top: 0.1em;
+	margin-left: 0.2em;
+}
+.prose a.link-pdf::after {
+	content: "("attr(data-type)")";
+	text-transform: uppercase;
+	display: inline-block;
+	color: rgba(75, 85, 99);
+	margin-left: 0.25em;
+}
+.prose a:hover {
+	text-decoration: none;
+}
+.prose h2 {
+	padding: 1em 0;
+	border-top: 1px solid #E5E7EB;
+	margin-top: 1em;
+}
+.prose > h2:first-child {
+	border-top: 0;
+	margin-top: 0;
+}
+.prose h3 {
+	font-weight: bold;
+	color: #111827;
+	padding-top: 1em;
+	margin-bottom: 1em;
+}
+.prose h4 {
+	margin-top: 1em;
+}
+.prose blockquote {
+	font-style: italic;
+	border-left: 1px solid #CBD5E0;
+	padding: 0.5em 0 0.5em 1.5em;
+}
+.prose figcaption {
+	font-style: italic;
+	color: #4B5563;
+	padding: 1em 0;
+}
+.prose table {
+	table-layout: auto;
+	border-collapse: collapse;
+	width: 100%;
+	margin: 2rem 0;
+}
+.prose table th,
+.prose table td {
+	padding: .5rem 1rem;
+	border: 1px solid #CBD5E0;
+}
+.prose table thead {
+	background-color: rgb(249, 250, 251);  
+}
+.prose ul {
+	padding-left: 1em;
+	list-style: initial;
+}
+.prose ol {
+	padding-left: 1em;
+	list-style: decimal;
+}
+.prose ul li,
+.prose ol li {
+	padding-left: 0.5em;
+	padding-bottom: 0.5em;
+}
+.prose p:last-child {
+	margin-bottom: 0;
+}
+
+.grid img {
+	width: 100%;
+	object-fit: cover;
+}
+
+/* Search */
+#search-input {
+	-webkit-appearance: none;
+}
+@media (max-width: 27.4375rem) { /* < xs */
+	#search-input:focus {
+		width: calc(100vw - 10rem);
+	}
+}
+@media (min-width: 27.5rem) { /* > xs */
+	#search-input {
+		min-width: 10rem;
+	}
+}
+
+/* Nav */
+#nav-wrapper {
+	height: calc(100vh - 80px);
+}
+
+#nav-menu > li:focus-within > .sub-menu,
+#nav-menu > li:hover > .sub-menu {
+	display: block;
+}
+#nav-menu > li:focus-within > a > svg,
+#nav-menu > li:hover > a > svg {
+	transform: rotate(180deg);
+}
+
+/* Sidebar nav */
+#sidebar-nav details > summary {
+	outline: none;
+	color: #A0AEC0;
+	padding-left:  .75rem;
+	padding-right: .75rem;
+}
+#sidebar-nav details > summary:focus {
+	outline: 1px dotted rgb(107, 114, 128);
+}
+#sidebar-nav details > summary > a,
+#sidebar-nav details > ul > li > a {
+	color: rgb(107, 114, 128);
+}
+#sidebar-nav > details > summary.active > a,
+#sidebar-nav > details > details > summary.active > a,
+#sidebar-nav > details > ul > li.active > a,
+#sidebar-nav > details > details > ul > li.active > a {
+	color: #1A202C;
+}
+
+/* 2nd level Sections */
+#sidebar-nav ul > li > ul > li > details > ul > li > details > summary {
+	padding-left:  1.5rem;
+}
+/* 3rd level Sections */
+#sidebar-nav ul > li > ul > li > details > ul > li > details > ul > li > details > summary {
+	padding-left:  2.25rem;
+}
+/* 4th level Sections */
+#sidebar-nav ul > li > ul > li > details > ul > li > details > ul > li > details > ul > li > details > summary {
+	padding-left:  3rem;
+}
+
+/* 1st level RegularPages */
+#sidebar-nav ul > li > ul > li > details > ul > li > a {
+	padding-left: 2.65rem;
+}
+/* 2nd level RegularPages */
+#sidebar-nav ul > li > ul > li > details > ul > li > details > ul > li > a {
+	padding-left: 3.4rem;
+}
+/* 3rd level RegularPages */
+#sidebar-nav ul > li > ul > li > details > ul > li > details > ul > li > details > ul > li > a {
+	padding-left: 4.15rem;
+}
+/* 4th level RegularPages */
+#sidebar-nav ul > li > ul > li > details > ul > li > details > ul > li > details > ul > li > details > ul > li > a {
+	padding-left: 4.9rem;
+}
+
+#sidebar-nav ul > li.context-RegularPages a::before {
+	content: "•";
+	color: #A0AEC0;
+	display: inline-block;
+	width: 0.5rem;
+	height: 2rem;
+	position: absolute;
+	margin-left: -1.05rem;
+	padding-top: 0.125rem;
+}
+@media (min-width: 64rem) { /* lg */
+	#sidebar {
+		/* autoprefixer: off */
+		position: -webkit-sticky;
+		position: sticky;
+	}
+	#sidebar-nav ul > li.context-RegularPages a::before {
+		padding-top: 0;
+	}
+}
+
+/* Breadcrumb */
+#breadcrumb-wrapper {
+	padding-top: 0.6rem;
+	padding-bottom: 0.6rem;
+}
+.breadcrumb ol > li {
+	display: inline-block;
+	font-size: .875rem;
+}
+.breadcrumb ol > li + li::before {
+	content: "/";
+	display: inline-block;
+	margin: 0 0.333rem;
+	color: #A0AEC0;
+}
+.breadcrumb ol > li:not(:last-child):not(.post-grandParent) a {
+	text-decoration: underline;
+}
+.breadcrumb ol > li:last-child:not(.post-parent) a {
+	color: rgb(107, 114, 128);
+}
+
+/* Compétences */
+#competences h3 {
+	padding-bottom: 0;
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+}
+
+/* Table of Contents (ToC) */
+.toc ul {
+	margin-bottom: 0;
+}
+.toc ul > li > ul {
+	margin-left: 1rem;
+}
+.toc li > a {
+	display: inline-block;
+	margin-bottom: 0.25rem;
+	color: rgb(107, 114, 128); /* text-gray-500 */
+}
+.toc li {
+	transition: color 0.2s ease-out;
+}
+.toc li.active a,
+.toc li > a:focus,
+.toc li > a:active {
+	color: rgba(55, 65, 81); /* text-gray-700 */
+}
+@media (hover: hover) {
+	.toc li > a:hover {
+		color: rgba(55, 65, 81); /* text-gray-700 */
+	}
+}
+
+
+/* Page link */
+.page-link {
+	margin: 1.5rem 0;
+}
+.page-link a {
+	color: initial;
+	text-decoration: none;
+}
+.page-link h3 {
+	padding: 0;
+	font-weight: 400;
+}
+.grid .page-link,
+.flex-col .page-link {
+	margin-top: -1px;
+	margin-bottom: 0;
+}
+@media (min-width: 40rem) {
+	.sm\:gap-x-8 {
+		grid-column-gap: 2rem;
+		-webkit-column-gap: 2rem;
+		-moz-column-gap: 2rem;
+		column-gap: 2rem;
+	}
+}
+
+/* Pagination */
+.pagination__link {
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0.625rem;
+}
+
+/* Print */
+
+.print { display: none }
+
+@media print {
+
+	.print { display: block }
+
+	body {
+		margin: 0;
+		padding: 0;
+		color: #111;
+	}
+
+	#header::after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0; 
+		right: 0;
+		height: 5rem;
+	}
+
+	#logo {
+		background-image: url("/chateaubourg-plateaux-numeriques/media/logo.png");
+		-webkit-print-color-adjust: exact; /* force browser to print background-image */
+		color-adjust: exact !important; 
+	}
+	
+	.prose a {
+		color: #111;
+	}
+	.prose a::after, a.print::after {
+		content: " (" attr(href) ")" !important;
+	}
+
+	table, img, svg {
+		break-inside: avoid;
+	}
+
+}

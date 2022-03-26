@@ -1,0 +1,71 @@
+---
+new_page_extension: md
+auto_deploy: false
+admin_path: ''
+webhook_url: 
+sections:
+- type: directory
+  path: content
+  label: Pages
+  create: all
+  match: "*"
+- type: directory
+  path: content/services-administratifs
+  label: Services administratifs
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/sante-territoire
+  label: Sante territoire
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/municipalite
+  label: Municipalité
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/mobilite
+  label: Mobilité
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/education-formation
+  label: Éducation & formation
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/economie
+  label: Économie
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/culture-tourisme
+  label: Culture tourisme
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/agenda
+  label: Agenda
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/actualites
+  label: Actualités
+  create: all
+  match: "**/*"
+upload_dir: assets/media
+public_path: "/media"
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ":filename:"
+build:
+  preview_env:
+  - HUGO_ENV=staging
+  - HUGO_VERSION=0.79.0
+  preview_output_directory: public
+  preview_docker_image: forestryio/hugo:latest
+  mount_path: "/srv"
+  working_dir: "/srv"
+  instant_preview_command: hugo server -D -E -F --renderToDisk -d public
+version: 0.79.0

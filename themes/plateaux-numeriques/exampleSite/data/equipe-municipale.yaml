@@ -1,0 +1,56 @@
+- title: "La Maire"
+  date: 1955-05-15
+  prenom: Prénom
+  nom: Nom
+  poste: Maire
+  description: 
+  telephone: 01 23 45 67 89
+  email: prenom.nom@votre-village.fr
+- title: "1er ajoint"
+  date: 1955-05-15
+  prenom: Prénom
+  nom: Nom
+  poste: 1er adjoint
+  description: Commision A, Commision B, Commision C
+  telephone: 01 23 45 67 89
+  email: prenom.nom@votre-village.fr
+- title: "2e adjoint"
+  date: 1955-05-15
+  prenom: Prénom
+  nom: Nom
+  poste: 2e adjoint
+  description: Commision A, Commision B, Commision C
+  telephone: 01 23 45 67 89
+  email: prenom.nom@votre-village.fr
+- title: "3e adjoint"
+  date: 1955-05-15
+  prenom: Prénom
+  nom: Nom
+  poste: 3e adjoint
+  description: Commision A, Commision B, Commision C
+  telephone: 01 23 45 67 89
+  email: prenom.nom@votre-village.fr
+- title: "Conseiller·ère municipal·e"
+  date: 1955-05-15
+  prenom: Prénom
+  nom: Nom
+  poste: Conseiller·ère
+  description: Commision A, Commision B, Commision C
+  telephone: 01 23 45 67 89
+  email: prenom.nom@votre-village.fr
+- title: "Conseiller·ère municipal·e"
+  date: 1955-05-15
+  prenom: Prénom
+  nom: Nom
+  poste: Conseiller·ère
+  description: Commision A, Commision B, Commision C
+  telephone: 01 23 45 67 89
+  email: prenom.nom@votre-village.fr
+- title: "Conseiller·ère municipal·e"
+  date: 1955-05-15
+  prenom: Prénom
+  nom: Nom
+  poste: Conseiller·ère
+  description: Commision A, Commision B, Commision C
+  telephone: 01 23 45 67 89
+  email: prenom.nom@votre-village.fr

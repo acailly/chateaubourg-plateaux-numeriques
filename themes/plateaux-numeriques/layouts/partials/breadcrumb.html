@@ -1,0 +1,16 @@
+<nav class="breadcrumb" role="navigation" aria-label="Fil d’Ariane">
+	<ol class="mb-0 pb-1" itemscope itemtype="http://schema.org/BreadcrumbList">
+		{{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+	</ol>
+	{{- define "breadcrumbnav" -}}
+		{{ if .p1.Parent }}
+			{{- template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 ) -}}
+		{{- else if not .p1.IsHome }}
+			{{- template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 ) -}}
+		{{- end }}<!--
+		--><li{{ if eq .p1 .p2 }} class="active"{{ end }} itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><!--
+			--><a href="{{ .p1.Permalink }}" itemprop="item"{{ if eq .p1 .p2 }} aria-current="true" title="{{ .p1.Title }} : page active"{{ end }} ><span itemprop="name">{{ .p1.Title }}</span></a>
+			{{ $position := sub (len (split .p1.RelPermalink "/")) 1 }}
+			<meta itemprop="position" content="{{ $position }}" />
+		</li>{{- end }}
+</nav>

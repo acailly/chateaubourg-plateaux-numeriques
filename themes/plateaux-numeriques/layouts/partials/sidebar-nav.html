@@ -1,0 +1,27 @@
+<aside id="sidebar" class="fixed flex-shrink-0 w-full max-w-screen bg-black bg-opacity-25 flex-shrink-0 inset-0 h-full z-10 border-b lg:sticky top-20 lg:border-b-0 lg:w-72 lg:max-w-96 xl:w-1/4 lg:border-0 lg:block lg:pt-0 hidden print:hidden" :class="{ 'hidden' : !isOpen, 'bg-black bg-opacity-25' : isOpen }">
+	
+	<div class="h-6 pointer-events-none min-w-72 w-7/8 lg:max-w-96 absolute inset-x-0 z-10 bg-gradient-to-b from-gray-50 z-10 lg:top-0"></div>
+	
+	<div id="nav-wrapper" class="min-w-72 w-7/8 lg:w-full h-full max-h-screen bg-gray-50 overflow-y-auto scrolling-touch lg:h-auto lg:block">
+		
+		<nav id="sidebar-nav" class="px-3 text-base lg:text-sm lg:px-5 py-6 pb-12" @click.away="isOpen = false" role="navigation">
+		
+			<ul>
+			{{- $currentPage := . -}}
+			{{- range .Site.Pages.ByWeight }}
+				{{- if and (.Params.menu.main) (not (isset .Params.menu.main "parent")) }}
+				<li open class="mb-4">
+					<div class="flex items-center h-12 lg:h-8 {{ if eq $currentPage . }}active rounded bg-gray-200{{ end }}">
+						<a href="{{ .Permalink }}" class="h-full w-full px-3 flex items-center">
+							<span class="pb-px text-sm lg:text-xs tracking-wide font-bold uppercase text-gray-600 hover:text-gray-800">{{ .Title }}</span>
+						</a>
+					</div>
+					{{- partial "sidebar-nav-recursive.html" (dict "context" . "currentPage" $currentPage) -}}
+				</li>
+				{{- end }}
+			{{- end }}
+			</ul>
+
+		</nav>
+	</div>
+</aside>

@@ -1,0 +1,28 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+{{ with .Description | default .Params.subtitle | default .Summary }}
+<meta name="description" content="{{ . }}" />
+{{ end }}
+<meta name="robots" content="{{ .Site.Params.Robots }}">
+{{ if .Params.Author }}
+<meta name="author" content="{{ .Params.Author }}" />
+{{ end }}
+{{ hugo.Generator }}
+
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{- partial "seo/main.html" . -}}
+{{- partialCached "favicons" . -}}
+
+{{- $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") -}}
+<!-- {{- if .Site.IsServer }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+{{ else }}
+  {{- $styles := $styles| minify | fingerprint | resources.PostProcess -}}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+{{ end -}} -->
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+
+<!-- Alpine.js -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>

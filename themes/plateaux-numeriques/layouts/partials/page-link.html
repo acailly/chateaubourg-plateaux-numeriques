@@ -1,0 +1,16 @@
+<li class="page-link | flex items-center border-t border-b">
+	{{ with .Page }}
+	<a href="{{ .RelPermalink }}" class="min-h-12 h-full flex-grow flex items-center py-3 hover:bg-gray-50 focus:bg-gray-50 active:bg-gray-100">
+		<span class="flex-shrink-0 text-base lg:text-lg -mt-1 mr-3 w-5 select-none" aria-hidden="true">{{ with .Params.Icon }}{{ . }}{{ else }}<span class="block -mt-1 text-center text-gray-400">•</span>{{ end }}</span>
+		<h3 class="flex-grow text-gray-900 text-sm lg:text-base">{{ .Title }}</h3>
+		<svg class="flex-shrink-0 text-gray-500 w-5 h-5 ml-3"><use xlink:href="#chevron-right"/></svg>
+	</a>
+	{{ else }}
+	<a href="{{ .URL }}" class="min-h-12 h-full flex-grow flex items-center py-3 hover:bg-gray-50 focus:bg-gray-50 active:bg-gray-100">
+		<span class="flex-shrink-0 text-base lg:text-lg -mt-1 mr-3 w-5 select-none" aria-hidden="true">
+🔗</span>
+		<h3 class="flex-grow text-gray-900 text-sm lg:text-base">{{ .Name }}</h3>
+		<svg class="flex-shrink-0 text-gray-500 w-5 h-5 ml-3"><use xlink:href="#chevron-right"/></svg>
+	</a>
+	{{ end }}
+</li>

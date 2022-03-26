@@ -1,0 +1,12 @@
+{{ if not .IsHome }}
+<div id="breadcrumb-wrapper" class="bg-white flex flex-wrap items-center px-8 min-h-12">
+	{{ partial "breadcrumb.html" . }}
+</div>
+{{ end }}
+
+{{ $currentPage := . }}
+{{- with .Params.header }}
+  {{- with resources.Get . }}
+  <header id="page-header" style="background-image:url({{ .RelPermalink }})" class="w-full h-40 md:h-80 bg-cover bg-center bg-gray-100 print:hidden"></header>
+  {{- end }}
+{{- end }}

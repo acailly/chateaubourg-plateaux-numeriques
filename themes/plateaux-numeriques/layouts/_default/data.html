@@ -1,0 +1,119 @@
+{{ define "main" }}
+
+{{ partial "page-header.html" . }}
+
+{{ $currentPage := . }}
+{{ $json := printf "%smedia/data.json" .Site.BaseURL }}
+{{ $data := getJSON $json }}
+
+<div id="wrapper" class="w-full flex justify-between mx-auto" data-kind="{{ .Kind }}">
+	
+	<aside class="flex-shrink-0 lg:order-last hidden xl:block xl:h-auto border-b lg:static pt-20 lg:pt-0 text-sm px-8 mt-8 md:mt-0 w-96 print:hidden" x-data="{ isExpended: true}">
+		<details class="toc | xl:sticky xl:top-0 py-5 xl:pt-32 xl:-mt-12 mb-0" :open="isExpended" @resize="isExpended = window.innerWidth < 1024 ? false : true">
+			<summary class="h-8 py-2 mb-1 text-sm uppercase tracking-wide text-gray-500 -mt-px select-none">Table des matières</summary>
+			<div class="mt-4 mb-1">
+				<nav id="TableOfContents">
+					<ul>
+					{{ range $data }}
+						{{ if and (isset $currentPage.Params "data_type") (isset $currentPage.Params "data_specificites") }}
+							{{ if and (eq .Type $currentPage.Params.data_type) (in (index . "Spécificités") $currentPage.Params.data_specificites) }}
+							<li><a href="#{{ anchorize .Nom }}">{{ .Nom }}</a></li>
+							{{ end }}
+						{{ else if (isset $currentPage.Params "data_specificites") }}
+							{{ if in (index . "Spécificités") $currentPage.Params.data_specificites }}
+							<li><a href="#{{ anchorize .Nom }}">{{ .Nom }}</a></li>
+						  {{ end }}
+						{{ else }}
+							{{ if eq .Type $currentPage.Params.data_type }}
+							<li><a href="#{{ anchorize .Nom }}">{{ .Nom }}</a></li>
+					  	{{ end }}
+						{{ end }}
+					{{ end }}
+					</ul>
+				</nav>
+			</div>
+		</details>
+	</aside>
+
+	<main id="main" role="main" class="w-full lg:max-w-4xl flex-auto min-h-screen lg:static lg:max-h-full lg:overflow-visible px-4 sm:px-6 xl:px-8">
+
+		{{- partial "search-results" . -}}
+		
+		<section class="w-full pb-12 {{ if .Params.icon | and .Params.header }}pt-0 -mt-8{{ else }}pt-12{{ end }} print:mt-4">
+			
+			<header class="pb-4 print:pb-3 border-b">
+				{{ with .Params.icon }}
+				<span class="icon | inline-block select-none text-6xl mb-8 print:float-left print:mt-2 print:mb-0 print:mr-6 print:text-3xl" aria-hidden="true">{{ . }}</span>
+				{{ end }}
+				<h1 class="text-gray-900 mb-2">{{ .Title }}</h1>
+				{{ with .Params.subtitle }}
+				<h2 class="text-lg text-gray-600 pb-6 print:clear-left">{{ . }}</h2>
+				{{ end }}
+			</header>
+
+			<aside class="xl:hidden border-b text-sm" x-data="{ isExpended: false}">
+				<details class="toc | xl:sticky xl:top-0 py-5 xl:pt-32 xl:-mt-12 mb-0" :open="isExpended" @resize="isExpended = window.innerWidth < 1024 ? false : true">
+					<summary class="h-8 py-2 mb-1 text-sm uppercase tracking-wide text-gray-500 -mt-px select-none">Table des matières</summary>
+					<div class="mt-4 mb-1">
+						<nav id="TableOfContents">
+							<ul>
+							{{ range $data }}
+								{{ if and (isset $currentPage.Params "data_type") (isset $currentPage.Params "data_specificites") }}
+									{{ if and (eq .Type $currentPage.Params.data_type) (in (index . "Spécificités") $currentPage.Params.data_specificites) }}
+									<li><a href="#{{ anchorize .Nom }}">{{ .Nom }}</a></li>
+									{{ end }}
+								{{ else if (isset $currentPage.Params "data_specificites") }}
+									{{ if in (index . "Spécificités") $currentPage.Params.data_specificites }}
+									<li><a href="#{{ anchorize .Nom }}">{{ .Nom }}</a></li>
+								  {{ end }}
+								{{ else }}
+									{{ if eq .Type $currentPage.Params.data_type }}
+									<li><a href="#{{ anchorize .Nom }}">{{ .Nom }}</a></li>
+							  	{{ end }}
+								{{ end }}
+							{{ end }}
+							</ul>
+						</nav>
+					</div>
+				</details>
+			</aside>
+			
+			{{ with .Content }}
+			<div class="py-8 border-b print:py-4 prose lg:prose-lg print:prose">
+				{{ . }}
+			</div>
+			{{ end }}
+
+			<div class="py-8 print:py-4">
+				<ul>
+				{{ range $data }}
+					
+					{{ if and (isset $currentPage.Params "data_type") (isset $currentPage.Params "data_specificites") }}
+
+						{{ if and (eq .Type $currentPage.Params.data_type) (in (index . "Spécificités") $currentPage.Params.data_specificites) }}
+							{{- partial "data-item.html" . -}}
+						{{ end }}
+
+					{{ else if (isset $currentPage.Params "data_specificites") }}
+
+						{{ if in (index . "Spécificités") $currentPage.Params.data_specificites }}
+							{{- partial "data-item.html" . -}}
+					  {{ end }}
+
+					{{ else }}
+
+						{{ if eq .Type $currentPage.Params.data_type }}
+							{{- partial "data-item.html" . -}}
+					  {{ end }}
+					
+					{{ end }}
+					
+				{{ end }}
+				</ul>
+			</div>
+
+		</section>
+	</main>
+
+</div>
+{{ end }}

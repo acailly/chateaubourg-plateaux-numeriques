@@ -1,0 +1,3 @@
+{{ $isExternal := strings.HasPrefix .Destination "http" }}
+{{ $isPDF := strings.HasSuffix .Destination ".pdf" }}
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if $isExternal }} target="_blank" rel="noopener"{{ end }} {{ if $isPDF }} data-type="pdf"{{ end }} class="{{ if $isExternal }}link-external{{ end }} {{ if $isPDF }}link-pdf{{ end }}">{{ .Text | safeHTML }}</a>

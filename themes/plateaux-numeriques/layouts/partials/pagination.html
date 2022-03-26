@@ -1,0 +1,71 @@
+{{ $paginator := .Paginator }}
+
+<!-- If there's more than one page. -->
+{{ if gt $paginator.TotalPages 1 }}
+<nav role="navigation" aria-label="Pagination" class="my-12">
+  <ul class="pagination flex flex-wrap justify-center align-center space-x-1 text-gray-600">
+
+    <!-- Previous page. -->
+    {{ if $paginator.HasPrev }}
+    <li class="pagination__item pagination__item--previous">
+      <a href="{{ $paginator.Prev.URL }}" class="pagination__link pagination__link--prev flex align-center items-center rounded-full text-gray-500 hover:bg-gray-100 active:bg-gray-200 focus:outline-none focus:ring-2" aria-label="Aller à la page précédente" title="Page précédente">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" class="w-6 h-6">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </a>
+    </li>
+    {{ end }}
+
+    <!-- First page. -->
+    {{ if gt $paginator.PageNumber 2 }}
+    <li class="pagination__item pagination__item--first">
+      <a href="{{ $paginator.First.URL }}" class="pagination__link pagination__link--first flex items-center rounded-full hover:bg-gray-100 active:bg-gray-200 focus:outline-none focus:ring-2" aria-label="Aller à la première page" title="Première page">
+        <span class="w-full text-center" title="Page 1">1</span>
+      </a>
+    </li>
+    {{ end }}
+
+    <!-- Ellipsis -->
+    {{ if gt $paginator.PageNumber 3 }}
+    <li aria-hidden="true" class="flex items-center text-gray-500 select-none"><span class="w-full text-center">…</span></li>
+    {{ end }}
+  
+    <!-- Page numbers. -->
+    {{ range $paginator.Pagers }}
+    {{ if or (eq .Next $paginator) (eq .Next $paginator) (eq . $paginator) (eq .Prev $paginator) }}
+    <li class="pagination__item{{ if eq . $paginator }} pagination__item--current{{ end }}">
+      <a href="{{ .URL }}" class="pagination__link flex items-center rounded-full hover:bg-gray-100 active:bg-gray-200 focus:outline-none focus:ring-2{{ if eq . $paginator }} text-gray-700 bg-gray-100{{ end }}"{{ if eq . $paginator }} aria-label="Page {{ .PageNumber }}" aria-current="true"{{ end }}>
+        <span class="w-full text-center" title="Page {{ .PageNumber }}" >{{ .PageNumber }}</span>
+      </a>
+    </li>
+    {{ end }}
+    {{ end }}
+
+    <!-- Ellipsis -->
+    {{ if lt $paginator.PageNumber $paginator.TotalPages }}
+    <li aria-hidden="true" class="flex items-center text-gray-500 select-none"><span class="w-full text-center">…</span></li>
+    {{ end }}
+
+    <!-- Last page. -->
+    {{ if ne $paginator.PageNumber $paginator.TotalPages }}
+    <li class="pagination__item pagination__item--last">
+      <a href="{{ $paginator.Last.URL }}" class="pagination__link pagination__link--last flex items-center rounded-full hover:bg-gray-100 active:bg-gray-200 focus:outline-none focus:ring-2" aria-label="Aller à la dernière page" title="Dernière page">
+        <span class="w-full text-center" title="Page {{ $paginator.TotalPages }}">{{ $paginator.TotalPages }}</span>
+      </a>
+    </li>
+    {{ end }}
+
+    <!-- Next page. -->
+    {{ if $paginator.HasNext }}
+    <li class="pagination__item pagination__item--next">
+      <a href="{{ $paginator.Next.URL }}" class="pagination__link pagination__link--next flex align-center items-center rounded-full text-gray-500 hover:bg-gray-100 active:bg-gray-200 focus:outline-none focus:ring-2" aria-label="Aller à la page suivante" title="Page suivante">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" class="w-6 h-6">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+    </li>
+    {{ end }}
+
+  </ul><!-- .pagination -->
+</nav>
+{{ end }}

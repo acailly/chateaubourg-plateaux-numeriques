@@ -1,0 +1,43 @@
+{{ $currentPage := .currentPage }}
+{{ $context := .context }}
+
+<ul class="mb-0">
+	{{ range .context.Sections.ByWeight }}
+		{{- if ne .Params.menuSection false }}
+		<li class="context-Sections">
+			<details class="ml-0" {{ if eq .CurrentSection $currentPage | or ($currentPage.IsDescendant .CurrentSection) }}open{{ end }}>
+				<summary class="min-h-12 lg:min-h-8 py-2 lg:py-1 rounded {{ if eq .CurrentSection $currentPage }}active rounded bg-gray-200{{ end }} relative"><!--
+				--><span class="inline-flex ml-1">
+						{{ with .CurrentSection.Params.Icon }}
+						<span class="icon | mr-2 select-none pt-px lg:pt-0 text-lg lg:text-base" aria-hidden="true">{{ . }}</span>
+						{{ end }}
+						<a href="{{ .Permalink }}" class="inline-block pt-1 lg:pt-px">
+							<span class="text-gray-700{{ if eq .CurrentSection $currentPage }} text-gray-800{{ end }} hover:text-gray-900">{{ .CurrentSection.Title }}</span>
+						</a>
+					</span>
+				</summary>
+				{{ partial "sidebar-nav-recursive.html" (dict "context" . "currentPage" $currentPage) }}
+			</details>
+		</li>
+		{{- else }}
+		<li class="context-RegularPages relative {{ if eq . $currentPage }}active rounded bg-gray-200{{ end }}">
+			<a href="{{ .Permalink }}" class="min-h-12 lg:min-h-8 flex py-2 lg:py-1 px-3">
+				{{ with .Params.Icon }}
+				<span class="icon | mr-2 select-none text-lg lg:text-base" aria-hidden="true">{{ . }}</span>
+				{{ end }}
+				<span class="pt-1 lg:pt-px text-gray-700{{ if eq . $currentPage }} text-gray-800{{ end }} hover:text-gray-900">{{ .Title }}</span>
+			</a>
+		</li>
+		{{- end }}
+	{{ end }}
+	{{ range .context.RegularPages }}
+	<li class="context-RegularPages relative {{ if eq . $currentPage }}active rounded bg-gray-200{{ end }}">
+		<a href="{{ .Permalink }}" class="min-h-12 lg:min-h-8 flex py-2 lg:py-1 px-3">
+			{{ with .Params.Icon }}
+			<span class="mr-2 text-lg lg:text-base" aria-hidden="true">{{ . }}</span>
+			{{ end }}
+			<span class="pt-1 lg:pt-px text-gray-700{{ if eq . $currentPage }} text-gray-800{{ end }} hover:text-gray-900">{{ .Title }}</span>
+		</a>
+	</li>
+	{{ end }}
+</ul>

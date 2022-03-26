@@ -1,0 +1,11 @@
+{{ with $.Site.GetPage "/acces-directs" }}
+<div class="py-12" id="acces-directs">
+	<h2 class="flex items-center justify-between font-regular text-2xl text-gray-900 xl:pt-2 mt-px mb-5"><span>{{ .Title }}</span><span aria-hidden="true">{{ .Params.Icon }}</span></h2>
+	{{ with .Params.subtitle }}<p class="text-gray-600 lg:text-lg">{{ . }}</p>{{ end }}
+	<ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 sm:gap-x-8">
+	{{ range .Site.Menus.direct_access.ByWeight }}
+		{{- partial "page-link" . -}}
+	{{ end }}
+	</ul>
+</div>
+{{ end }}

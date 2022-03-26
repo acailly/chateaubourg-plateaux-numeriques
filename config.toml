@@ -1,0 +1,5 @@
+baseURL = 'https://acailly.github.io/chateaubourg-plateaux-numeriques/'
+languageCode = 'fr-fr'
+title = 'Chateaubourg en transition'
+theme = 'plateaux-numeriques'
+staticDir = ['assets']

@@ -1,0 +1,21 @@
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}" />
+{{- with .Description | default .Params.subtitle | default .Summary }}
+<meta name="twitter:description" content="{{ . | truncate 200 }}">
+{{- end }}
+{{- with .Params.header | default .Params.image | default .Site.Params.image }}
+{{ $image := resources.Get . }}
+{{ $pathArr := split . "." }}
+{{ $pathLen := len $pathArr }}
+{{ $ext := index $pathArr (sub $pathLen 1) }}
+{{- with $image }}
+{{ if ne $ext "svg" }}
+{{ $image_resized := .Fill "1200x628 smart" }}
+<meta name="twitter:image" content="{{ $image_resized.Permalink }}" />
+{{- end }}
+{{ end }}
+{{- end }}
+<meta name="twitter:card" content="summary_large_image" />
+{{- with .Site.Author.twitter }}
+<meta name="twitter:site" content="@{{ . }}" />
+<meta name="twitter:creator" content="@{{ . }}" />
+{{- end }}

@@ -1,0 +1,74 @@
+{{ define "main" }}
+
+{{ partial "page-header.html" . }}
+
+<div id="wrapper" class="relative w-full flex justify-between mx-auto" data-kind="{{ .Kind }}">
+  
+  <main id="main" role="main" class="w-full lg:max-w-4xl flex-auto min-h-screen lg:static lg:max-h-full lg:overflow-visible px-4 sm:px-6 xl:px-8">
+
+    {{- partialCached "search-results" . -}}
+    
+    <section class="w-full pb-12 {{ if .Params.icon | and .Params.header }}pt-0 -mt-8{{ else }}pt-12{{ end }} print:mt-4">
+      
+      <header class="pb-4 print:pb-3 border-b">
+        {{ with .Params.icon }}
+        <span class="inline-block text-6xl mb-8 print:float-left print:mt-2 print:mb-0 print:mr-6 print:text-3xl" aria-hidden="true">{{ . }}</span>
+        {{ end }}
+        <h1 class="text-gray-900 mb-2">{{ .Title }}</h1>
+        {{ with .Params.subtitle }}
+        <h2 class="text-lg text-gray-600 pb-6 print:clear-left">{{ . }}</h2>
+        {{ end }}
+      </header>
+      
+      {{ with .Content }}
+      <div class="py-8 print:py-4 border-b prose lg:prose-lg print:prose">
+      {{ . }}
+      </div>
+      {{ end }}
+
+      <div class="section w-full pb-12 border-b">
+        <div class="my-8">
+          <div class="flex flex-col mb-8 space-y-10">
+            {{ $paginator := .Paginate (.Pages.ByPublishDate.Reverse) }}
+            {{ range $paginator.Pages }}
+            <article class="relative w-full flex flex-col-reverse sm:flex-row sm:items-center">
+              <div class="flex-1 pr-4">
+                <header class="flex flex-col-reverse">
+                  <h3 class="font-bold text-gray-900 text-base md:text-lg my-2">{{ .Title }}</h3>
+                  <time class="text-gray-700 text-sm" datetime="{{ dateFormat "2006-01-02" .Date }}">
+                    {{ .Date.Day }} {{ index $.Site.Data.mois (printf "%d" .Date.Month) }} {{ .Date.Year }}
+                  </time>
+                </header>
+                <div class="text-gray-700 text-sm">
+                  {{ .Params.description | safeHTML | truncate 320 }}
+                  <a href="{{ .RelPermalink }}" tabindex="0" class="text-primary underline hover:no-underline" title="Lire {{ .Title }}">Lire la suite</a>
+                </div>
+              </div>
+              <div class="w-full sm:w-1/4 sm:pl-4 mb-4 sm:mb-0">
+                <figure class="w-full h-0 relative pb-2/3 bg-gray-200">
+                {{- with .Params.header }}
+                  {{- with resources.Get . }}
+                  <img 
+                    width="184" height="123" 
+                    src="{{ (.Fit "184x123").RelPermalink }}" 
+                    srcset="{{ (.Fit "368x246").RelPermalink }} 368w, {{ (.Fit "552x369").RelPermalink }} 552w" 
+                    alt="" 
+                    class="absolute w-full h-full object-cover" 
+                    loading="lazy">
+                  {{ end }}
+                {{ end }}
+                </figure>
+              </div>
+            </article>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+
+      {{ partial "pagination.html" . }}
+
+    </section>
+  </main>
+
+</div>
+{{ end }}

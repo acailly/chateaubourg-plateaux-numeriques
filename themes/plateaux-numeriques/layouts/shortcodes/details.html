@@ -1,0 +1,7 @@
+{{ .Scratch.Set "lastp" (sub (.Params | len) 1) }}
+<details {{ if .Get 0 | eq "open"}} open {{ end }}>
+  <summary class="h-8 py-2 mb-1 text-gray-400 select-none">
+    <span class="text-gray-700">{{ .Get (.Scratch.Get "lastp") }}</span>
+  </summary>
+  {{ .Inner | markdownify }}
+</details>

@@ -1,0 +1,18 @@
+[
+  {{- range $index, $page := .Site.RegularPages -}}
+    {{- if gt $index 0 -}} , {{- end -}}
+    {{- $entry := dict "uri" $page.RelPermalink "title" $page.Title -}}
+    {{- $entry = merge $entry (dict "subtitle" ($page.Params.subtitle)) -}}
+    {{- $entry = merge $entry (dict "icon" ($page.Params.icon)) -}}
+    {{- $entry = merge $entry (dict "parent" ($page.Parent.Title)) -}}
+    {{- $entry = merge $entry (dict "parentLink" ($page.Parent.RelPermalink)) -}}
+    {{- with $page.Parent.Parent -}}
+    {{- $entry = merge $entry (dict "grandParent" (.Title)) -}}
+    {{- $entry = merge $entry (dict "grandParentLink" (.RelPermalink)) -}}
+    {{- end -}}
+    {{- $entry = merge $entry (dict "content" ($page.Plain | htmlUnescape)) -}}
+    {{- $entry = merge $entry (dict "description" $page.Description) -}}
+    {{- $entry = merge $entry (dict "categories" $page.Params.categories) -}}
+    {{- $entry | jsonify -}}
+  {{- end -}}
+]

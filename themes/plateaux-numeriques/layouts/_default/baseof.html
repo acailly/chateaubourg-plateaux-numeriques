@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='{{ .Site.LanguageCode }}'>
+  
+  {{- partial "head.html" . -}}
+  
+  <body class="bg-white box-border antialiased min-h-screen text-gray-900" x-data="{ isOpen: false, isMobile: true }" x-init="isOpen = window.innerWidth >= 1024; isMobile = window.innerWidth < 1024" @keydown.escape="isOpen = false" :class="{ 'overflow-y-hidden': (isOpen && isMobile) }" @resize.window="
+    if (window.innerWidth >= 1024) { isOpen = true; isMobile = false } else { isMobile = true; if (isOpen) { isOpen = false } }">
+    <!--{{- partial "dev-size-indicator.html" . -}}-->
+    {{- partialCached "icons.html" . -}}
+
+    {{- partialCached "header.html" . -}}
+    
+    <div class="w-full lg:flex">
+
+      {{- partial "sidebar-nav.html" . -}}
+      
+      <div id="content-wrapper" class="min-w-0 w-full flex flex-col lg:static lg:max-h-full">
+
+        <div id="container" class="flex mt-20" >
+
+          <div class="page w-full flex-auto mx-auto max-w-screen-xl">
+            {{- block "main" . }}{{- end }}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {{- partialCached "footer.html" . -}}
+    <!--{{- partial "dev-parameters.html" . -}}-->
+    
+  </body>
+
+  {{- partialCached "js.html" . -}}
+
+</html>

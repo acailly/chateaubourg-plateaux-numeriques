@@ -1,0 +1,60 @@
+<li class="border-b pt-2 pb-10 prose lg:prose-lg print:prose">
+	
+	<h2 id="{{ anchorize .Nom }}">{{ .Nom }}</h2>
+
+	{{ with (index . "Descriptif court") }}
+	<p class="text-lg">{{ . }}</p>
+	{{ end }}
+	
+	<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+		{{ with .Adresse }}
+		<p class="flex-1 mb-0">
+			<span class="mr-1 select-none" aria-hidden="true">📍</span> <span class="text-sm uppercase tracking-wide text-gray-500">Adresse</span> <br>
+			{{ range split . "\n" }}
+			<span>{{ . | markdownify }}</span> <br>
+			{{ end }}
+		</p>
+		{{ end }}
+
+		{{ with (index . "Périodes d'ouverture") }}
+		<p class="flex-1 mt-4 md:mt-0 md:mb-4">
+			<span class="mr-1 select-none" aria-hidden="true">🗓️</span> <span class="text-sm uppercase tracking-wide text-gray-500">Périodes d’ouverture</span> <br>
+			{{ range split . "\n\n" }}
+			<span>{{ . | markdownify }}</span> <br>
+			{{ end }}
+		</p>
+		{{ end }}
+	</div>
+
+	{{ with (index . "Moyens de communication") }}
+	<p>
+		<span class="mr-1 select-none" aria-hidden="true">💬</span> <span class="text-sm uppercase tracking-wide text-gray-500">Contact</span> <br>
+		{{ range split . "|" }}
+		<span>{{ . | markdownify }}</span> <br>
+		{{ end }}
+	</p>
+	{{ end }}
+
+	<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+		{{ with (index . "Spécificités") }}
+		<details class="text-gray-400">
+			<summary>
+				<span class="mr-1 select-none" aria-hidden="true">ℹ️</span> <span class="text-sm uppercase tracking-wide text-gray-500 select-none">Spécificités</span>
+			</summary>
+			{{ range split . "\n\n" }}
+			<span class="text-gray-600">{{ . | markdownify }}</span> <br>
+			{{ end }}
+		</details>
+		{{ end }}
+		{{ with (index . "Tarifs") }}
+		<details class="text-gray-400">
+			<summary>
+				<span class="mr-1 select-none" aria-hidden="true">💶</span> <span class="text-sm uppercase tracking-wide text-gray-500 select-none">Tarifs</span>
+			</summary>
+			{{ range split . "\n\n" }}
+			<span class="text-gray-600">{{ . | markdownify }}</span> <br>
+			{{ end }}
+		</details>
+		{{ end }}
+	</div>	
+</li>

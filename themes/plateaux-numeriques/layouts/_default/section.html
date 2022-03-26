@@ -1,0 +1,35 @@
+{{ define "main" }}
+
+{{ partial "page-header.html" . }}
+
+<div id="wrapper" class="relative w-full max-w-8xl flex mx-auto" data-kind="{{ .Kind }}">
+  
+  <main id="main" role="main" class="w-full lg:max-w-4xl flex-auto min-h-screen lg:static lg:max-h-full lg:overflow-visible px-4 sm:px-6 xl:px-8">
+
+    {{- partialCached "search-results" . -}}
+
+    <section class="pb-12 {{ if .Params.icon | and .Params.header }}pt-0 -mt-8{{ else }}pt-12{{ end }} print:mt-4">
+      
+      <header class="pb-4 print:pb-3 border-b">
+        {{ with .Params.icon }}
+        <span class="inline-block text-6xl mb-8 print:float-left print:mt-2 print:mb-0 print:mr-6 print:text-3xl" aria-hidden="true">{{ . }}</span>
+        {{ end }}
+        <h1 class="text-gray-900 mb-2 print:mt-0">{{ .Title }}</h1>
+        {{ with .Params.subtitle }}
+        <h2 class="text-lg text-gray-600 pb-6 print:clear-left">{{ . }}</h2>
+        {{ end }}
+      </header>
+      
+      {{ with .Content }}
+      <div class="py-8 print:py-4 border-b prose lg:prose-lg print:prose">
+      {{ . }}
+      </div>
+      {{ end }}
+
+      {{- partial "pages.html" . -}}
+      
+    </section>
+  </main>
+
+</div>
+{{ end }}

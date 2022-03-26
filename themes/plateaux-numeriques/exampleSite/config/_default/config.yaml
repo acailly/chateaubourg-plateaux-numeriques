@@ -1,0 +1,19 @@
+baseURL: https://plateaux-numeriques.netlify.app/
+languageCode: fr
+defaultcontentlanguage: fr
+title: Votre village
+theme: plateaux-numeriques
+copyright: Coopyleft 2020, Design Commun.
+
+metaDataFormat: yaml
+
+outputFormats:
+  SearchIndex:
+    baseName: search
+    mediaType: application/json
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - SearchIndex

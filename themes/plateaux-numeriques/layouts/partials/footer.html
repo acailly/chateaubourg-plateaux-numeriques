@@ -1,0 +1,122 @@
+{{ with $.Site.GetPage "/footer" }}
+<footer class="bg-gray-900 w-full pin-b text-sm text-gray-300 print:hidden" role="contentinfo">
+	<div class="mx-auto">
+		<div class="flex flex-col md:flex-row">
+
+			<div class="flex flex-1 flex-col sm:flex-row">
+				{{ with .Params.mairie }}
+				<div class="flex-1 p-8">
+					<h2 class="text-gray-100 text-lg">{{ .nom }}</h2>
+					<div class="flex -mx-4 -mb-4">
+						<div class="px-4 mb-4">
+							<p>
+								<span>{{ .adresse }}</span> <br>
+								<span>{{ .code_postal }}</span> <span>{{ .ville }}</span>
+							</p>
+							<p>
+								{{ with .tel }}
+								Tél. : <a href="tel:+33{{ replaceRE "(\\s)" "" . }}" class="text-gray-300 underline hover:no-underline">{{ . }}</a> <br>
+								{{ end }}
+								{{ with .fax }}
+								Fax : <a href="fax:+33{{ replaceRE "(\\s)" "" . }}" class="text-gray-300 underline hover:no-underline">{{ . }}</a>
+								{{ end }}
+							</p>
+							<a href="{{ .contact }}" class="text-gray-300 underline hover:no-underline">Nous contacter</a>
+						</div>
+					</div>
+				</div>
+				{{ end }}
+				
+				{{ with .Params.partenaires }}
+				<div class="flex-1 p-8">
+					<h2 class="text-gray-100 text-lg">Partenaires</h2>
+					<div class="flex -mx-4 -mb-4">
+						<div class="px-4 mb-4">
+							<ul>
+								{{ range . }}
+								<li>
+									<a href="{{ .lien }}" class="text-gray-300 underline hover:no-underline">{{ .nom }}</a>
+								</li>
+								{{ end }}
+							</ul>
+						</div>
+					</div>
+				</div>
+				{{ end }}
+			</div>
+			
+			<div class="flex flex-1 flex-col sm:flex-row">
+				{{ with .Params.labels }}
+				<div class="flex-1 p-8">
+					<h2 class="text-gray-100 text-lg">Labels</h2>
+					<div class="flex -mx-4 -mb-4 mt-2">
+						<div class="px-4 mb-4">
+							<ul>
+								{{ range . }}
+								<li>
+									<a href="{{ .lien }}" class="text-gray-300 inline-flex items-center underline hover:no-underline mb-2">{{ with resources.Get .logo }}<img src="{{ .RelPermalink }}" class="bg-white mr-3" width="72" height="60" alt="">{{ end }}{{ .nom }}</a>
+								</li>
+								{{ end }}
+							</ul>
+						</div>
+					</div>
+				</div>
+				{{ end }}
+				
+				{{ with .Params.reseaux_sociaux }}
+				<div class="flex-1 p-8">
+					<h2 class="text-gray-100 text-lg">Réseaux sociaux</h2>
+					<div class="flex -mx-4 -mb-4">
+						<div class="w-full lg:w-1/2 px-4 mb-4">
+							<ul>
+								{{ range . }}
+								<li>
+									<a href="{{ .lien }}" class="text-gray-300 underline hover:no-underline">{{ .nom }}</a>
+								</li>
+								{{ end }}
+							</ul>
+						</div>
+					</div>
+				</div>
+				{{ end }}
+			</div>
+
+		</div>
+		
+		
+		{{ with .Params.pages }}
+		<div class="p-8 border-t border-gray-800">
+			<ul class="list-middot">
+				{{- range . -}}
+				<li><a href="{{ .lien }}" class="text-gray-300 underline hover:no-underline">{{ .nom }}</a></li>
+				{{- end -}}
+			</ul>
+		</div>
+		{{ end }}
+		
+		<div class="flex flex-col lg:flex-row items-baseline lg:justify-between border-t border-gray-800 pb-4">
+			<div class="flex-1 p-8 pb-0">
+				<div class="text-sm">
+					{{ $package := getJSON "https://gitlab.com/plateaux-numeriques/plateaux-numeriques-theme/-/raw/master/package.json" }}
+					<p>Propulsé par <a href="https://plateaux-numeriques.fr" class="text-gray-300 underline hover:no-underline">Plateaux numériques</a> <br>2021 · <a href="{{ $package.repository }}" class="text-gray-300 underline hover:no-underline">{{ $package.description }}</a> v{{ $package.version }}</p>
+				</div>
+			</div>
+
+			<div class="flex-1 p-8">
+				<h2 class="text-gray-100 text-lg">Partenaires financiers</h2>
+				<div class="flex -mx-4 -mb-4">
+					<ul class="flex flex-wrap px-4 mb-4">
+						<li>
+							<a href="https://ec.europa.eu/programmes/horizon2020/" class="text-gray-300 flex-shrink-0 flex items-center text-xs mr-10 my-3" lang="en">{{ with resources.Get "img/eu.svg" }}<img src="{{ .RelPermalink }}" class="mr-3 h-12 w-auto" width="78" height="48" alt="">{{ end }}Funded by the Horizon 2020 <br>Framework Programme of the <br>European Union</a>
+						</li>
+						<li>
+							<a href="https://designscapes.eu/" class="my-3 inline-flex items-center underline hover:no-underline mb-2" lang="en">{{ with resources.Get "img/designscapes-logo.svg" }}<img src="{{ .RelPermalink }}" class="mr-3 h-12 w-auto" width="80" height="60" alt="Design Scapes" title="Design Scapes">{{ end }}</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</footer>
+{{ end }}

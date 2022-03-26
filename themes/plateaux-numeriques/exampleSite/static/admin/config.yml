@@ -1,0 +1,169 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+local_backend: true
+
+media_folder: static/img
+public_folder: /img
+publish_mode: editorial_workflow
+
+collections:
+  - label: 'Actualités & Agenda'
+    label_singular: 'Actualité'
+    name: 'actualite-agenda'
+    folder: 'content/actualites-agenda'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}/index'
+    media_folder: ''
+    nested:
+      depth: 2 # max depth to show in the collection tree
+      summary: '{{title}}' # optional summary for a tree node, defaults to the inferred title field
+    # adding a meta object with a path property allows editing the path of entries
+    # moving an existing entry will move the entire sub tree of the entry to the new location
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+    editor:
+      preview: false
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - { label: 'Slug', name: 'slug', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'date' }
+      - { label: 'Date de publication', name: 'publishDate', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Catégories', name: 'categories', widget: 'select', options: ["municipalité", "intercommunalité", "vie culturelle"], required: false }
+      - { label: 'Mots-clés', name: 'tags', widget: 'list', required: false }
+      - label: 'Ressources'
+        name: 'resources'
+        widget: 'list'
+        required: false
+        summary: '{{fields.src}}'
+        fields:
+          - { label: Image de couverture, name: cover, widget: boolean }
+          - { label: Source, name: src, widget: image }
+          - { label: Texte alternatif, name: alt, widget: string }
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }
+  - label: "Municipalité"
+    name: "municipalite"
+    files:
+      - label: "Bulletins municipaux"
+        name: "bulletins-municipaux"
+        file: "content/municipalite/bulletins-municipaux/_index.md"
+        create: true
+        slug: '{{year}}-{{month}}-{{slug}}/index'
+        fields:
+          - { label: 'Titre', name: 'title', widget: 'string' }
+          - { label: 'Slug', name: 'slug', widget: 'string' }
+          - { label: 'Date', name: 'date', widget: 'date' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Contenu', name: 'body', widget: 'markdown' }
+      - label: "Mairie"
+        name: "mairie"
+        file: "content/municipalite/mairie/index.md"
+        editor:
+          preview: false
+        fields:
+          - { label: 'Titre', name: 'title', widget: 'string' }
+          - { label: 'Slug', name: 'slug', widget: 'string' }
+          - { label: 'Date', name: 'date', widget: 'date' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - label: 'Sous-titre'
+            name: 'subtitle'
+            widget: 'string'
+          - label: 'Location'
+            name: 'location'
+            widget: 'object'
+            summary: '{{fields.adresse}} - {{fields.code_postal}} {{fields.ville}}'
+            fields:
+              - label: 'Adresse'
+                name: 'adresse'
+                widget: 'string'
+              - label: 'Code postal'
+                name: 'code_postal'
+                widget: 'string'
+              - label: 'Ville'
+                name: 'ville'
+                widget: 'string'
+              - label: 'Pays'
+                name: 'pays'
+                widget: 'string'
+                default: 'France'
+              - label: 'Latitude'
+                name: 'lat'
+                widget: 'number'
+                valueType: float
+                step: 0.00001
+              - label: 'Longitude'
+                name: 'lon'
+                widget: 'number'
+                valueType: float
+                step: 0.00001
+  - label: "Bulletins municipaux"
+    label_singular: "Bulletin municipal"
+    name: "bulletins-municipaux"
+    folder: "content/municipalite/bulletins-municipaux"
+    create: true
+    slug: '{{year}}-{{month}}-{{slug}}/index'
+    media_folder: 'documents'
+    public_folder: '/documents'
+    nested:
+      depth: 2
+      summary: '{{title}}'
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - { label: 'Slug', name: 'slug', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'date' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'PDF', name: 'pdf', widget: 'file' }
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }
+  - label: "Comptes rendus"
+    label_singular: "Compte rendu"
+    name: "comptes-rendus"
+    folder: "content/municipalite/comptes-rendus/"
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}/index'
+    media_folder: 'documents'
+    public_folder: '/documents'
+    nested:
+      depth: 2
+      summary: '{{title}}'
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - { label: 'Slug', name: 'slug', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'date' }
+      - { label: 'Description', name: 'description', widget: 'string', default: "Compte rendu du conseil municipal du {{day}}/{{month}}/{{year}}" }
+      - { label: 'PDF', name: 'pdf', widget: 'file' }
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "Accueil"
+        name: "home"
+        file: "content/_index.md"
+        fields:
+          - { label: 'Titre', name: 'title', widget: 'string' }
+          - { label: 'Slug', name: 'slug', widget: 'string' }
+          - { label: 'Date', name: 'date', widget: 'datetime' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Contenu', name: 'body', widget: 'markdown' }
+      - label: "Accès directs"
+        name: "acces-directs"
+        file: "content/acces-directs.md"
+        fields:
+          - { label: 'Titre', name: 'title', widget: 'string' }
+          - { label: 'Slug', name: 'slug', widget: 'string' }
+          - { label: 'Date', name: 'date', widget: 'datetime' }
+          - { label: 'Description', name: 'description', widget: 'string' }
+          - { label: 'Sous-titre', name: 'subtitle', widget: 'string' }
+          - { label: 'Pages', name: 'pages', widget: 'relation', collection: "all_pages", collapsed: false, multiple: true, valueField: slug, searchFields: ["title"], displayFields: ["title"] }
+          - { label: 'Contenu', name: 'body', widget: 'markdown', required: false }
+  - label: "Toutes les pages"
+    name: "all_pages"
+    folder: "content/"
+    nested:
+      depth: 5
+      summary: '{{title}}'
+    fields:
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - { label: 'Slug', name: 'slug', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }

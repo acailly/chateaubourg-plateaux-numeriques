@@ -1,0 +1,4 @@
+<details class="toc | xl:sticky xl:top-0 py-5 xl:pt-32 xl:-mt-12 mb-0" @resize.window="isExpanded = window.innerWidth >= 1280" :open="isExpanded">
+	<summary class="h-8 py-2 mb-1 text-sm uppercase tracking-wide text-gray-500 -mt-px select-none">Table des matières</summary>
+	<div class="text-gray-500 mt-4 mb-1">{{ .TableOfContents }}</div>
+</details>

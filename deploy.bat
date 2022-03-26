@@ -1,1 +1,1 @@
-npx gh-pages -d public
+npm run deploy
